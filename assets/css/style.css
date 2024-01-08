@@ -1,0 +1,124 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: rgb(244, 206, 69);
+}
+
+.circles {
+    background-color: rgb(198, 49, 49);
+    box-shadow: 2px 3px rgb(193, 188, 188);
+    border-bottom: 8px double black;
+}
+
+.circles button {
+    border-radius: 50%;
+    cursor: default;
+    border: 2px solid black;
+}
+
+h1 {
+    font-family: 'Pokemon Solid', sans-serif;
+    color: rgb(241, 198, 42);
+    -webkit-text-stroke: 3px rgb(4, 53, 187);
+    text-shadow: 5px 6px rgb(72, 71, 71);
+}
+
+.box {
+    box-shadow: 2px 3px rgb(193, 188, 188);
+    border: 20px solid rgb(198, 49, 49);
+    padding: 5px solid black;
+}
+
+input[type="radio"] {
+    transform: scale(1.5);
+    margin-right: 5px;
+}
+
+input[type="radio"]:checked + label {
+    color: rgb(239, 9, 9);
+}
+
+label,
+button {
+    font-family: 'Silkscreen', 'sans-serif';
+}
+
+.buttons {
+    background-color: rgb(198, 49, 49);
+    box-shadow: 2px 3px rgb(163, 163, 163);
+
+}
+
+.buttons button {
+    box-shadow: 2px 3px rgb(162, 161, 161);
+}
+.buttons button:active {
+    transform: translate(2px);
+    box-shadow: 0 0 0;
+    outline: 0;
+}
+
+.buttons button:hover {
+    border: 2px dashed black;
+    color: yellow;
+}
+
+.circles, .box, .buttons {
+    flex-shrink: 0;
+    width: 25%;
+}
+
+.circles, .box, .buttons {
+    flex-shrink: 0;
+    width: 25%; 
+}
+
+
+@media (max-width: 640px) {
+    .circles, .box, .buttons {
+        width: 62%; 
+    }
+}
+
+
+@media (min-width: 641px) and (max-width: 768px) {
+    .circles, .box, .buttons {
+        width: 55%; 
+    }
+}
+
+
+@media (min-width: 769px) and (max-width: 1024px) {
+    .circles, .box, .buttons {
+        width: 48%; 
+    }
+}
+
+
+@media (min-width: 1025px) and (max-width: 1280px) {
+    .circles, .box, .buttons {
+        width: 35%;
+    }
+}
+
+
+@media (min-width: 1281px) and (max-width: 1440px) {
+    .circles, .box, .buttons {
+        width: 33%; 
+    }
+}
+
+@media (min-width: 1441px) {
+    .circles, .box, .buttons {
+        width: 30%; 
+    }
+}
+
+@media (min-width: 1601px) {
+    .circles, .box, .buttons {
+        width: 25%; /* Set it to 15% for screens with a width larger than 1600px */
+    }
+}
+
