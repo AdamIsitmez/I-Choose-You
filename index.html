@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <title>I Choose You</title>
+    <link href="https://fonts.cdnfonts.com/css/pokemon-solid?styles=24573" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Silkscreen&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./assets/css/style.css">
+</head>
+
+<body class="flex justify-center items-center min-h-screen">
+    <div class="container mx-auto text-center">
+        <div class="circles w-1/4 my-auto mx-auto py-3 flex-shrink-0 min-w-500">
+            <button class="blue bg-blue-600 px-5 py-5"></button>
+            <button class="red bg-red-500 px-2 py-2"></button>
+            <button class="yellow bg-yellow-500 px-2 py-2"></button>
+            <button class="green bg-green-500 px-2 py-2"></button>
+        </div>
+        <div class="box bg-gray-300 p-6 w-1/4 mx-auto my-auto flex-shrink-0 min-w-500">
+            <h1 class="text-5xl font-bold mb-14">MoDe</h1>
+            <div class="mt-4 font-bold">
+                <div class="mb-4">
+                    <input type="radio" name="gameMode" id="pvp" value="pvp">
+                    <label for="pvp" class="text-xl ml-2">PLAYER VS PLAYER</label>
+                </div>
+                <div class="mt-2">
+                    <input type="radio" name="gameMode" id="pvc" value="pvc">
+                    <label for="pvc" class="text-xl ml-2">PLAYER VS CPU</label>
+                </div>
+            </div>
+        </div>
+        <div class="buttons p-8 w-1/4 mx-auto my-auto flex-shrink-0 min-w-500">
+            <div>
+                <button id="backBtn" class="bg-blue-500 text-white font-bold px-5 py-2 rounded-md mr-12">BACK</button>
+                <button id="nextBtn" class="bg-green-500 text-white font-bold px-5 py-2 rounded-md ml-12">NEXT</button>
+            </div>
+            <div>
+                <button id="muteBtn" class="bg-red-400 text-white px-2 py-1 rounded-md mt-8">Mute</button>
+            </div>
+         </div>    
+    </div>
+
+    <script src="./assets/js/script.js"></script>
+</body>
+</html>
