@@ -108,10 +108,8 @@ startGameBtn.addEventListener('click', function () {
     page1.classList.add('hidden');
     page2.classList.remove('hidden');
     buttonsContainer.classList.remove('hidden'); // Show the button container
-    // You may want to add logic to navigate to the next page or initialize the game here
+    
 });
-
-// Adding click event listener for Back button
 
 // Adding click event listener for Back button
 backBtn.addEventListener('click', function () {
