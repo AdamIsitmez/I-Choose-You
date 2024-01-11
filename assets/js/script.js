@@ -1,3 +1,4 @@
+// DOM Elements
 var buttonsContainer = document.getElementById('buttonsContainer');
 var inst = document.getElementById('instructions');
 var instPrevBtn = document.getElementById('instPrevBtn');
@@ -5,9 +6,12 @@ var instNextBtn = document.getElementById('instNextBtn');
 var startGameBtn = document.getElementById('startGameBtn');
 var backBtn = document.getElementById('backBtn');
 var nextBtn = document.getElementById('nextBtn');
-var playBtn = document.getElementById('playBtn');
-var muteBtn = document.getElementById('muteBtn');
+var playBtn1 = document.getElementById('playBtn1');
+var muteBtn1 = document.getElementById('muteBtn1');
+var playBtn2 = document.getElementById('playBtn2');
+var muteBtn2 = document.getElementById('muteBtn2');
 
+// Radio buttons and forms
 var pvpRadio = document.getElementById('pvp');
 var pvcRadio = document.getElementById('pvc');
 var playerVsCpuForm = document.getElementById('playerVsCpuForm');
@@ -16,6 +20,7 @@ var playerName = document.getElementById('playerName');
 var player1Name = document.getElementById('player1Name');
 var player2Name = document.getElementById('player2Name');
 
+// Pages
 var page1 = document.getElementById('page1');
 var page2 = document.getElementById('page2');
 var page3 = document.getElementById('page3');
@@ -23,38 +28,7 @@ var page4 = document.getElementById('page4');
 
 var audioElement = document.querySelector('audio');
 
-// Function to play audio
-function playAudio() {
-    audioElement.play();
-}
-
-// Function to pause audio
-function pauseAudio() {
-    audioElement.pause();
-}
-
-// Function to toggle audio playback
-function toggleAudio() {
-    if (audioElement.paused) {
-        playAudio();
-    }
-}
-
-// Function to toggle mute
-function toggleMute() {
-    audioElement.muted = !audioElement.muted;
-}
-
-// Adding click event listener for playBtn
-playBtn.addEventListener('click', function () {
-    toggleAudio();
-});
-
-// Adding click event listener for muteBtn
-muteBtn.addEventListener('click', function () {
-    toggleMute();
-});
-
+// Game Instructions
 var instArray = [
     "Become the ultimate Pokémon Trainer by defeating opponents in 5 rounds of intense Pokémon battles.",
     "Choose your Pokémon wisely, leverage their unique powers, and emerge victorious!",
@@ -72,102 +46,108 @@ var instArray = [
 // Index to keep track of the current instruction
 var currentIndex = 0;
 
+// Event Listeners
+playBtn1.addEventListener('click', toggleAudio);
+muteBtn1.addEventListener('click', toggleMute);
+playBtn2.addEventListener('click', toggleAudio);
+muteBtn2.addEventListener('click', toggleMute);
+instPrevBtn.addEventListener('click', showPreviousInstruction);
+instNextBtn.addEventListener('click', showNextInstruction);
+startGameBtn.addEventListener('click', startGame);
+backBtn.addEventListener('click', navigateBack);
+nextBtn.addEventListener('click', navigateNext);
+
+// Function to play audio
+function playAudio() {
+    audioElement.play();
+}
+
+// Function to pause audio
+function pauseAudio() {
+    audioElement.pause();
+}
+
+// Function to toggle audio playback
+function toggleAudio() {
+    audioElement.paused ? playAudio() : pauseAudio();
+}
+
+// Function to toggle mute
+function toggleMute() {
+    audioElement.muted = !audioElement.muted;
+}
+
 // Function to update the displayed instruction
 function updateInstructions() {
     inst.textContent = instArray[currentIndex];
 }
 
-// Adding click event listener for instPrevBtn
-instPrevBtn.addEventListener('click', function () {
-    showPreviousInstruction();
-});
-
-// Adding click event listener for instNextBtn
-instNextBtn.addEventListener('click', function () {
-    showNextInstruction();
-});
-
 // Function to show the previous instruction
 function showPreviousInstruction() {
-    if (currentIndex > 0) {
-        currentIndex--;
-        updateInstructions();
-    }
+    currentIndex > 0 && currentIndex--;
+    updateInstructions();
 }
 
 // Function to show the next instruction
 function showNextInstruction() {
-    if (currentIndex < instArray.length - 1) {
-        currentIndex++;
-        updateInstructions();
+    currentIndex < instArray.length - 1 && currentIndex++;
+    updateInstructions();
+}
+
+// Function to start the game
+function startGame() {
+    page1.classList.add('hidden');
+    page2.classList.remove('hidden');
+    buttonsContainer.classList.remove('hidden');
+}
+
+// Function to navigate back between pages
+function navigateBack() {
+    if (!page2.classList.contains('hidden')) {
+        resetForm(playerVsPlayerForm);
+        page2.classList.add('hidden');
+        page1.classList.remove('hidden');
+        buttonsContainer.classList.add('hidden');
+    } else if (!page3.classList.contains('hidden')) {
+        resetForm(playerVsCpuForm);
+        page3.classList.add('hidden');
+        page2.classList.remove('hidden');
+        buttonsContainer.classList.remove('hidden');
+    } else if (!page4.classList.contains('hidden')) {
+        resetForm(playerVsPlayerForm);
+        page4.classList.add('hidden');
+        page2.classList.remove('hidden');
+        buttonsContainer.classList.remove('hidden');
     }
 }
 
-startGameBtn.addEventListener('click', function () {
-    // Hide Page 1 and show Page 2 when Start Game button is clicked
-    page1.classList.add('hidden');
-    page2.classList.remove('hidden');
-    buttonsContainer.classList.remove('hidden'); // Show the button container
-    
-});
+// Function to reset form inputs
+function resetForm(form) {
+    form.reset();
+}
 
-// Adding click event listener for Back button
-backBtn.addEventListener('click', function () {
-    if (!page1.classList.contains('hidden')) {
-        console.log('Back button on Page 1 clicked');
-    } else if (!page2.classList.contains('hidden')) {
-        // Back button on Page 2, navigate to Page 1
-        page2.classList.add('hidden');
-        page1.classList.remove('hidden');
-        // Clear the input value when navigating back to Page 1
-        playerVsPlayerForm.reset();
-        buttonsContainer.classList.add('hidden');
-    } else if (!page3.classList.contains('hidden')) {
-        // Back button on Page 3, navigate to Page 2
-        page3.classList.add('hidden');
-        page2.classList.remove('hidden');
-        playerVsCpuForm.reset();
-        buttonsContainer.classList.remove('hidden'); 
-    } else if (!page4.classList.contains('hidden')) {
-        // Back button on Page 4, navigate to Page 2
-        page4.classList.add('hidden');
-        page2.classList.remove('hidden');
-        // Clear the input value when navigating back to Page 2
-        playerVsPlayerForm.reset();
-        buttonsContainer.classList.remove('hidden'); 
-    }
-});
-
-var playerName;
-var player1Name;
-var player2Name;
-
+// Function to save player names based on the current page
 function savePlayerNames() {
     if (!page3.classList.contains('hidden')) {
-        // If on Page 3 (Player vs CPU), save player name
         playerName.value;
     } else if (!page4.classList.contains('hidden')) {
-        // If on Page 4 (Player vs Player), save both player names
         player1Name.value;
         player2Name.value;
     }
 }
 
-// Adding click event listener for Next button
-nextBtn.addEventListener('click', function () {
-    savePlayerNames(); // Save player names before navigating to the next page
-
+// Function to navigate to the next page
+function navigateNext() {
+    savePlayerNames();
     if (pvcRadio.checked) {
-        // Show page 3 for Player vs CPU
-        page2.classList.add('hidden'); // Hide Page 2
+        page2.classList.add('hidden');
         page3.classList.remove('hidden');
         page4.classList.add('hidden');
     } else if (pvpRadio.checked) {
-        // Show page 4 for Player vs Player
-        page2.classList.add('hidden'); // Hide Page 2
-        page3.classList.add('hidden'); // Hide Page 3
+        page2.classList.add('hidden');
+        page3.classList.add('hidden');
         page4.classList.remove('hidden');
     } else {
         console.log('No radio button selected');
     }
-});
+}
