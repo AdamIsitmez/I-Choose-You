@@ -47,56 +47,54 @@ body {
 
 @keyframes blinkBlue {
     0%, 100% {
-        background-color: #2980b9; /* Darker blue at the start and end of the animation */
+        background-color: #2980b9; 
     }
     50% {
-        background-color: #3498db; /* Regular blue color in the middle of the animation */
+        background-color: #3498db; 
     }
 }
 
 @keyframes blinkRed {
     0%, 100% {
-        background-color: #c0392b; /* Darker red at the start and end of the animation */
+        background-color: #c0392b; 
     }
     50% {
-        background-color: #e74c3c; /* Regular red color in the middle of the animation */
+        background-color: #e74c3c; 
     }
 }
 
-/* Green Color Gradient */
 @keyframes blinkGreen {
     0%, 100% {
-        background-color: #27ae60; /* Darker green at the start and end of the animation */
+        background-color: #27ae60; 
     }
     50% {
-        background-color: #2ecc71; /* Regular green color in the middle of the animation */
+        background-color: #2ecc71; 
     }
 }
 
-/* Yellow Color Gradient */
 @keyframes blinkYellow {
     0%, 100% {
-        background-color: #f39c12; /* Darker yellow at the start and end of the animation */
+        background-color: #f39c12; 
     }
     50% {
-        background-color: #f1c40f; /* Regular yellow color in the middle of the animation */
+        background-color: #f1c40f; 
     }
 }
 
 .blue {
-    animation: blinkBlue 1s infinite; /* 2s duration, infinite loop */   
+    animation: blinkBlue 1s infinite;  
 }
 
 .red {
-    animation: blinkRed 0.75s infinite; /* Adjust the duration as needed */
+    animation: blinkRed 0.75s infinite; 
 }
 
 .green {
-    animation: blinkGreen 0.5s infinite; /* Adjust the duration as needed */
+    animation: blinkGreen 0.5s infinite; 
 }
 
 .yellow {
-    animation: blinkYellow 1s infinite; /* Adjust the duration as needed */
+    animation: blinkYellow 1s infinite;
 }
 
 .box {
@@ -157,10 +155,9 @@ form input {
 
 .btn {
     border: none;
-    padding: 2px 20px; /* Adjust padding as needed */
-   /* Set background color */
-    color: #0d0d0d; /* Set text color */
-    font-size: 16px; /* Set font size */
+    padding: 2px 20px;
+    color: #0d0d0d; 
+    font-size: 16px; 
     cursor: pointer;
   }
 

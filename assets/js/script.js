@@ -48,13 +48,11 @@ function toggleMute() {
 // Adding click event listener for playBtn
 playBtn.addEventListener('click', function () {
     toggleAudio();
-    console.log('Play button clicked');
 });
 
 // Adding click event listener for muteBtn
 muteBtn.addEventListener('click', function () {
     toggleMute();
-    console.log('Mute button clicked');
 });
 
 var instArray = [
@@ -94,7 +92,6 @@ function showPreviousInstruction() {
     if (currentIndex > 0) {
         currentIndex--;
         updateInstructions();
-        console.log('Previous button for instructions clicked');
     }
 }
 
@@ -103,7 +100,6 @@ function showNextInstruction() {
     if (currentIndex < instArray.length - 1) {
         currentIndex++;
         updateInstructions();
-        console.log('Next button for instructions clicked');
     }
 }
 
@@ -120,32 +116,27 @@ startGameBtn.addEventListener('click', function () {
 // Adding click event listener for Back button
 backBtn.addEventListener('click', function () {
     if (!page1.classList.contains('hidden')) {
-        // Back button on Page 1, navigate to a previous page or handle accordingly
         console.log('Back button on Page 1 clicked');
-        // You may want to add logic to navigate to a previous page or handle accordingly
     } else if (!page2.classList.contains('hidden')) {
         // Back button on Page 2, navigate to Page 1
         page2.classList.add('hidden');
         page1.classList.remove('hidden');
         // Clear the input value when navigating back to Page 1
-        playerVsPlayerForm.reset(); // Assuming playerVsPlayerForm is the form ID
-        buttonsContainer.classList.add('hidden'); // Hide buttonsContainer when going back to Page 1
-        console.log('Back button on Page 2 clicked');
+        playerVsPlayerForm.reset();
+        buttonsContainer.classList.add('hidden');
     } else if (!page3.classList.contains('hidden')) {
         // Back button on Page 3, navigate to Page 2
         page3.classList.add('hidden');
         page2.classList.remove('hidden');
         playerVsCpuForm.reset();
-        buttonsContainer.classList.remove('hidden'); // Show buttonsContainer when going back to Page 2
-        console.log('Back button on Page 3 clicked');
+        buttonsContainer.classList.remove('hidden'); 
     } else if (!page4.classList.contains('hidden')) {
         // Back button on Page 4, navigate to Page 2
         page4.classList.add('hidden');
         page2.classList.remove('hidden');
         // Clear the input value when navigating back to Page 2
-        playerVsPlayerForm.reset(); // Assuming playerVsPlayerForm is the form ID
-        buttonsContainer.classList.remove('hidden'); // Show buttonsContainer when going back to Page 2
-        console.log('Back button on Page 4 clicked, navigating to Page 2');
+        playerVsPlayerForm.reset();
+        buttonsContainer.classList.remove('hidden'); 
     }
 });
 
@@ -157,13 +148,10 @@ function savePlayerNames() {
     if (!page3.classList.contains('hidden')) {
         // If on Page 3 (Player vs CPU), save player name
         playerName.value;
-        console.log('Player Name:', playerName);
     } else if (!page4.classList.contains('hidden')) {
         // If on Page 4 (Player vs Player), save both player names
         player1Name.value;
         player2Name.value;
-        console.log('Player 1 Name:', player1Name);
-        console.log('Player 2 Name:', player2Name);
     }
 }
 
@@ -176,15 +164,12 @@ nextBtn.addEventListener('click', function () {
         page2.classList.add('hidden'); // Hide Page 2
         page3.classList.remove('hidden');
         page4.classList.add('hidden');
-        console.log('Next button clicked for Player vs CPU');
     } else if (pvpRadio.checked) {
         // Show page 4 for Player vs Player
         page2.classList.add('hidden'); // Hide Page 2
         page3.classList.add('hidden'); // Hide Page 3
         page4.classList.remove('hidden');
-        console.log('Next button clicked for Player vs Player');
     } else {
-        // Handle other cases if needed
         console.log('No radio button selected');
     }
 });
