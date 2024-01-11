@@ -6,30 +6,105 @@ body {
     background-color: rgb(244, 206, 69);
 }
 
+#page1 img {
+    width: 90%;
+}
+
+#page1 .box {
+    height: 420px;
+}
+
+#page1 #instPrevBtn{
+    margin-right: 20px;
+}
+
+#page2 img {
+    width: 50%;
+}
+
+#page3 img{
+    width: 80%;
+}
+
+#page1 p {
+    font-family: 'Silkscreen', sans-serif;
+    font-size: 18px;
+}
+
 .circles {
     background-color: rgb(198, 49, 49);
-    box-shadow: 2px 3px rgb(193, 188, 188);
+    box-shadow: 3px 4px rgb(163, 163, 163);
     border-bottom: 8px double black;
+    border-radius: 12px 12px 0 0;
 }
 
 .circles button {
     border-radius: 50%;
     cursor: default;
     border: 2px solid black;
+    align-items: start;
 }
 
-h1 {
-    font-family: 'Pokemon Solid', sans-serif;
-    color: rgb(241, 198, 42);
-    -webkit-text-stroke: 3px rgb(4, 53, 187);
-    text-shadow: 5px 6px rgb(72, 71, 71);
+@keyframes blinkBlue {
+    0%, 100% {
+        background-color: #2980b9; /* Darker blue at the start and end of the animation */
+    }
+    50% {
+        background-color: #3498db; /* Regular blue color in the middle of the animation */
+    }
+}
+
+@keyframes blinkRed {
+    0%, 100% {
+        background-color: #c0392b; /* Darker red at the start and end of the animation */
+    }
+    50% {
+        background-color: #e74c3c; /* Regular red color in the middle of the animation */
+    }
+}
+
+/* Green Color Gradient */
+@keyframes blinkGreen {
+    0%, 100% {
+        background-color: #27ae60; /* Darker green at the start and end of the animation */
+    }
+    50% {
+        background-color: #2ecc71; /* Regular green color in the middle of the animation */
+    }
+}
+
+/* Yellow Color Gradient */
+@keyframes blinkYellow {
+    0%, 100% {
+        background-color: #f39c12; /* Darker yellow at the start and end of the animation */
+    }
+    50% {
+        background-color: #f1c40f; /* Regular yellow color in the middle of the animation */
+    }
+}
+
+.blue {
+    animation: blinkBlue 1s infinite; /* 2s duration, infinite loop */   
+}
+
+.red {
+    animation: blinkRed 0.75s infinite; /* Adjust the duration as needed */
+}
+
+.green {
+    animation: blinkGreen 0.5s infinite; /* Adjust the duration as needed */
+}
+
+.yellow {
+    animation: blinkYellow 1s infinite; /* Adjust the duration as needed */
 }
 
 .box {
-    box-shadow: 2px 3px rgb(193, 188, 188);
+    box-shadow: 3px 4px rgb(163, 163, 163);
     border: 20px solid rgb(198, 49, 49);
     padding: 5px solid black;
 }
+
 
 input[type="radio"] {
     transform: scale(1.5);
@@ -45,15 +120,25 @@ button {
     font-family: 'Silkscreen', 'sans-serif';
 }
 
+img {
+    text-align: center;
+}
+
+form input {
+    font-family: 'Silkscreen', 'sans-serif';
+    width: 100%;
+}
+
 .buttons {
     background-color: rgb(198, 49, 49);
-    box-shadow: 2px 3px rgb(163, 163, 163);
-
+    box-shadow: 3px 4px rgb(163, 163, 163);
+    border-radius: 0 0 12px 12px;
 }
 
 .buttons button {
     box-shadow: 2px 3px rgb(162, 161, 161);
 }
+
 .buttons button:active {
     transform: translate(2px);
     box-shadow: 0 0 0;
@@ -70,18 +155,21 @@ button {
     width: 25%;
 }
 
-.circles, .box, .buttons {
-    flex-shrink: 0;
-    width: 25%; 
-}
+.btn {
+    border: none;
+    padding: 2px 20px; /* Adjust padding as needed */
+   /* Set background color */
+    color: #0d0d0d; /* Set text color */
+    font-size: 16px; /* Set font size */
+    cursor: pointer;
+  }
 
-
+/* Media queries */
 @media (max-width: 640px) {
     .circles, .box, .buttons {
         width: 62%; 
     }
 }
-
 
 @media (min-width: 641px) and (max-width: 768px) {
     .circles, .box, .buttons {
@@ -95,7 +183,6 @@ button {
         width: 48%; 
     }
 }
-
 
 @media (min-width: 1025px) and (max-width: 1280px) {
     .circles, .box, .buttons {
@@ -118,7 +205,7 @@ button {
 
 @media (min-width: 1601px) {
     .circles, .box, .buttons {
-        width: 25%; /* Set it to 15% for screens with a width larger than 1600px */
+        width: 25%; 
     }
 }
 
