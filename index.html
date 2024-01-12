@@ -91,6 +91,42 @@
             </div>
         </div>
 
+        <!-- Page 5: Select Pokemon Player 1 -->
+        <div id="page5" class="hidden">
+            <div class="box bg-gray-300 p-6 w-1/4 mx-auto my-auto flex-shrink-0 min-w-500">
+                <div class="screen flex-grow">
+                    <img src="https://fontmeme.com/permalink/240109/0e51d5d5d01cde9706030dffd9fbb579.png" alt="title-pokemon-font" class="title mx-auto my-auto mb-4">
+                    <label>PLAYER 1 : JEAN PIERE</label>
+                    <div class="w-full h-[100vh] bg-slate-200 flex justify-center items-center flex-col pt-2">
+                        <div class="w-full relative" onclick="event.stopImmediatePropagation();">
+                          <input id="playerSel1" placeholder="Select pokemon" class="px-5 py-3 w-full border border-gray-300 rounded-md" />
+                          <div id="pokemonList1" class="w-full h-60 border border-gray-300 rounded-md bg-white absolute overflow-y-auto hidden"></div>
+                        </div>
+                    </div>
+                    <!-- <select id="playerSel1">
+                    </select> -->
+                </div>
+            </div>
+        </div>
+        
+        <!-- Page 6: Select Pokemon Player 1 -->
+        <div id="page6" class="hidden">
+            <div class="box bg-gray-300 p-6 w-1/4 mx-auto my-auto flex-shrink-0 min-w-500">
+                <div class="screen flex-grow">
+                    <img src="https://fontmeme.com/permalink/240109/0e51d5d5d01cde9706030dffd9fbb579.png" alt="title-pokemon-font" class="title mx-auto my-auto mb-4">
+                    <label>PLAYER 2 : MADELEINE</label>
+                    <div class="w-full h-[100vh] bg-slate-200 flex justify-center items-center flex-col pt-2">
+                        <div class="w-full relative" onclick="event.stopImmediatePropagation();">
+                          <input id="playerSel2" placeholder="Select pokemon" class="px-5 py-3 w-full border border-gray-300 rounded-md" />
+                          <div id="pokemonList2" class="w-full h-60 border border-gray-300 rounded-md bg-white absolute overflow-y-auto hidden"></div>
+                        </div>
+                    </div>
+                    <!-- <select id="playerSel1">
+                    </select> -->
+                </div>
+            </div>
+        </div>
+
         <!-- Navigation Buttons -->
         <div id="buttonsContainer" class="hidden">
             <div class="buttons p-8 w-1/4 mx-auto my-auto">
@@ -108,7 +144,8 @@
     </div>
 
     <!-- Audio -->
-    <audio autoplay loop>
+    <audio loop>
+    <!-- <audio autoplay loop> -->
         <source src="./assets/audio/Upbeat Retro Gaming Background Music.mp3" type="audio/mp3">
         Your browser does not support the audio element.
     </audio>

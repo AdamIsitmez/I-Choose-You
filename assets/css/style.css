@@ -197,3 +197,6 @@ form input {
     }
 }
 
+#playerSel1, #playerSel2, #pokemonList1, #pokemonList2 {
+    font-family: 'Silkscreen', 'sans-serif';
+}
