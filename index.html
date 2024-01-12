@@ -4,15 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <title>I Choose You</title>
-    <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Silkscreen&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./assets/css/style.css">
+    <title>I Choose You</title>
+    
 </head>
 
 <body class="flex justify-center items-center min-h-screen">
     <div class="container mx-auto text-center">
-        <div class="circles w-1/4 my-auto mx-auto py-3 flex-shrink-0 min-w-500">
+        
+        <!-- Pokedex circles -->
+        <div class="circles w-1/4 my-auto mx-auto py-3">
             <button class="blue px-5 py-5"></button>
             <button class="red px-2 py-2"></button>
             <button class="yellow px-2 py-2"></button>
@@ -21,31 +23,32 @@
         
         <!-- Page 1: Title Page -->
         <div id="page1">
-            <div class="box bg-gray-300 p-6 w-1/4 mx-auto my-auto flex-shrink-0 min-w-500 flex flex-col justify-between">
-                <div class="flex-grow ">
+            <div class="box bg-gray-300 p-6 w-1/4 mx-auto my-auto flex flex-col">
+                <div class="screen flex-grow">
                     <img src="https://fontmeme.com/permalink/240109/0e51d5d5d01cde9706030dffd9fbb579.png" alt="title-pokemon-font" class="title mx-auto my-auto mb-4">
                     <p class="text-xl mb-2" id="instructions">Become the ultimate Pokémon Trainer by defeating opponents in 5 rounds of intense Pokémon battles.</p>
                 </div>
                 <div class="mt-1">
-                    <button id="instPrevBtn"><</button>
-                    <button id="instNextBtn">></button>
+                    <button id="instPrevBtn">&lt</button>
+                    <button id="instNextBtn">&gt</button>
                 </div>
             </div> 
 
-            <div class="buttons p-6 w-1/4 mx-auto my-auto flex-shrink-0 min-w-500">
+            <!-- Page 1: Buttons -->
+            <div class="buttons p-4 w-1/4 mx-auto my-auto">
                 <div>
-                    <button id="startGameBtn" class="bg-blue-500 text-white font-bold px-4 py-2 rounded-md">Start Game</button>
-                </div>  
-                <div>
-                    <button id="playBtn" class="bg-green-400 text-white px-2 py-1 rounded-md mt-8 mb-3 mr-5">▶</button>
-                    <button id="muteBtn" class="bg-red-400 text-white px-2 py-1 rounded-md mt-8 mb-3">Mute</button>
+                    <button id="startGameBtn" class="bg-blue-500 text-white font-bold px-4 py-2 rounded-md mb-3">Start Game</button>
+                </div> 
+                <div id="audioBtn1">
+                    <button id="playBtn1" class="bg-green-400 text-white px-2 py-1 rounded-md mt-3 mb-4 mr-2">▶</button>
+                    <button id="muteBtn1" class="bg-red-400 text-white px-2 py-1 rounded-md mt-3 mb-4 ml-2">Mute</button>
                 </div>  
             </div>
         </div>
         
         <!-- Page 2: Mode -->
         <div id="page2" class="hidden">
-            <div class="box bg-gray-300 p-6 w-1/4 mx-auto my-auto flex-shrink-0 min-w-500">
+            <div class="box bg-gray-300 p-6 w-1/4 mx-auto my-auto">
                 <img src="https://fontmeme.com/permalink/240109/26a33fb0626cca9c6aeefafef4fe68c2.png" alt="mode-pokemon-font" class="mode mx-auto my-auto mb-3">               
                 <div class="mt-4 font-bold">
                     <div class="mb-4">
@@ -62,7 +65,7 @@
 
         <!-- Page 3: Player vs CPU -->
         <div id="page3" class="hidden">
-            <div class="box bg-gray-300 p-6 w-1/4 mx-auto my-auto flex-shrink-0 min-w-500">
+            <div class="box bg-gray-300 p-6 w-1/4 mx-auto my-auto">
                 <img src="https://fontmeme.com/permalink/240109/bd0f8c6f96ca1087f06a30c45057bd52.png" alt="name-pokemon-font" class="name1 mx-auto my-auto mb-3">
                 <form id="playerVsCpuForm">
                     <label for="playerName" class="text-xl">Player Name:</label>
@@ -73,7 +76,7 @@
 
         <!-- Page 4: Player vs Player -->
         <div id="page4" class="hidden">
-            <div class="box bg-gray-300 p-6 w-1/4 mx-auto my-auto flex-shrink-0 min-w-500">
+            <div class="box bg-gray-300 p-6 w-1/4 mx-auto my-auto">
                 <img src="https://fontmeme.com/permalink/240109/6b417b84f2941f2b8caf1d048fcfe976.png" alt="names-pokemon-font" class="name2 mx-auto my-auto mb-3">
                 <form id="playerVsPlayerForm">
                     <div class="mb-4">
@@ -88,15 +91,17 @@
             </div>
         </div>
 
-        <!-- Back, Next, Mute buttons -->
+        <!-- Navigation Buttons -->
         <div id="buttonsContainer" class="hidden">
-            <div class="buttons p-8 w-1/4 mx-auto my-auto flex-shrink-0 min-w-500">
+            <div class="buttons p-8 w-1/4 mx-auto my-auto">
                 <div>
-                    <button id="backBtn" class="bg-blue-500 text-white font-bold px-5 py-2 rounded-md mr-12">BACK</button>
-                    <button id="nextBtn" class="bg-green-500 text-white font-bold px-5 py-2 rounded-md ml-12">NEXT</button>
+                    <button id="backBtn" class="bg-blue-500 text-white font-bold px-5 py-2 rounded-md mr-8">BACK</button>
+                    <button id="nextBtn" class="bg-green-500 text-white font-bold px-5 py-2 rounded-md ml-8">NEXT</button>
                 </div>
-                <div>
-                    <button id="muteBtn" class="bg-red-400 text-white px-2 py-1 rounded-md mt-8">Mute</button>
+                <!-- Audio Buttons  -->
+                <div id="audioBtn2">
+                    <button id="playBtn2" class="bg-green-400 text-white px-2 py-1 rounded-md mt-8 mb-3 mr-2">▶</button>
+                    <button id="muteBtn2" class="bg-red-400 text-white px-2 py-1 rounded-md mt-8 mb-3 ml-2">Mute</button>
                 </div>
             </div>  
         </div>
