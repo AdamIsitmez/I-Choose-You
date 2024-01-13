@@ -21,7 +21,7 @@
         </div>
 
         <!-- Page 1: Title Page -->
-        <div id="page1">
+        <div id="page1" class="hidden">
             <div
                 class="box bg-gray-300 p-6 w-1/4 mx-auto my-auto flex-shrink-0 min-w-500 flex flex-col justify-between">
                 <div class="flex-grow ">
@@ -31,9 +31,8 @@
                         in 5 rounds of intense Pokémon battles.</p>
                 </div>
                 <div class="mt-1">
-                    <button id="instPrevBtn">
-                        << /button>
-                            <button id="instNextBtn">></button>
+                    <button id="instPrevBtn">&lt;</button>
+                    <button id="instNextBtn">&gt;</button>
                 </div>
             </div>
 
@@ -97,8 +96,47 @@
             </div>
         </div>
 
+        <div id="page8">
+            <div class="box p-6 w-1/4 mx-auto my-auto flex-shrink-0 min-w-500">
+                <div id="battle-title">draw!</div>
+                <div class="p1">
+                    <img id="p1-pokemon" src="" alt="">
+                    <img id="p1-grass" src="assets/grass batte patch.svg" alt="">
+                    <p id="p1-pokemon-name"></p>
+                </div>
+                <div class="p2">
+                    <img id="p2-pokemon" src="" alt="">
+                    <img id="p2-grass" src="assets/grass batte patch.svg" alt="">
+                    <p id="p2-pokemon-name"></p>
+                </div>
+                <div class="battle-wrapper">
+                    <div class="p1-battle-details">
+                        <div class="names">Adam</div>
+                        <div class="score-display">
+                            <div class="point empty-score"></div>
+                            <div class="point empty-score"></div>
+                            <div class="point empty-score"></div>
+                            <div class="point empty-score"></div>
+                            <div class="point empty-score"></div>
+                        </div>
+                    </div>
+                    <div class="p2-battle-details">
+                        <div class="names">Ash</div>
+                        <div class="score-display">
+                            <div class="point empty-score"></div>
+                            <div class="point empty-score"></div>
+                            <div class="point empty-score"></div>
+                            <div class="point empty-score"></div>
+                            <div class="point empty-score"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="rest-button">hello</div>
+        </div>
+
         <!-- Back, Next, Mute buttons -->
-        <div id="buttonsContainer" class="hidden">
+        <div id="buttonsContainer" class="show">
             <div class="buttons p-8 w-1/4 mx-auto my-auto flex-shrink-0 min-w-500">
                 <div>
                     <button id="backBtn"
@@ -111,13 +149,25 @@
                 </div>
             </div>
         </div>
+
+        </section>
+        <!-- <section class="page8">
+            <div class="p1">
+                <img id="p1-pokemon" src="" alt="">
+                <img id="p1-grass" src="assets/grass batte patch.svg" alt="">
+            </div>
+            <div class="p2">
+                <img id="p2-pokemon" src="" alt="">
+                <img id="p2-grass" src="assets/grass batte patch.svg" alt="">
+            </div>
+        </section> -->
     </div>
 
     <!-- Audio -->
-    <audio autoplay loop>
+    <!-- <audio autoplay loop>
         <source src="./assets/audio/Upbeat Retro Gaming Background Music.mp3" type="audio/mp3">
         Your browser does not support the audio element.
-    </audio>
+    </audio> -->
 
     <script src="./assets/js/script.js"></script>
 </body>

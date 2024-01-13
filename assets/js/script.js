@@ -172,53 +172,110 @@ nextBtn.addEventListener('click', function () {
     }
 });
 
-// var nameDisplayEl = document.getElementById()
+battleTitleEl = document.getElementById("battle-title");
+var p1ScoreEl = document.querySelectorAll(".p1-battle-details * .point");
+var p2ScoreEl = document.querySelectorAll(".p2-battle-details * .point");
 
-function getPokemon(name) {
+console.log(p1ScoreEl)
+console.log(p2ScoreEl)
+
+var p1Pokemon = "rhydon"
+var p2Pokemon = "mew"
+
+var battleCount = 0;
+var p1Score = 0;
+var p2Score = 0;
+
+handleBattlePage(p1Pokemon, p2Pokemon);
+
+async function getPokemon(name) {
     const imageUrl = "https://pokeapi.co/api/v2/pokemon/" + name;
-    // Use the Fetch API to fetch the image
-    return fetch(imageUrl)
-        .then(response => {
-            if (!response.ok) {
-                throw new Error(`Network response was not ok: ${response.statusText}`);
-            }
-            return response.json();
-        })
-        .then(function (data) {
-            return data;
-        })
-        .catch(error => {
-            console.error("Error fetching data:", error);
-        });
+
+    try {
+        var response = await fetch(imageUrl);
+
+        if (!response.ok) {
+            throw new Error(`Network response was not ok: ${response.statusText}`);
+        }
+
+        var data = await response.json();
+        return data;
+    } catch (error) {
+        console.error("Error fetching data:", error);
+    }
 }
 
+async function handleBattlePage(p1Pokemon, p2Pokemon) {
+    try {
+        var p1PokemonData = await getPokemon(p1Pokemon);
+        var p2PokemonData = await getPokemon(p2Pokemon);
+        countdown();
 
-getPokemon("charizard")
-    .then(p1Pokemon => {
-        // Assign the Pokemon data to the variable
-        // console.log("p1:", p1Pokemon.sprites.other.showdown.back_default);
-        handleP1Selection(p1Pokemon);
-    })
-    .catch(error => {
+        p1Selection(p1PokemonData);
+        p2Selection(p2PokemonData);
+        setTimeout(() => { handleBattleResult(p1PokemonData, p2PokemonData); }, 5000);
+    } catch (error) {
         console.error("Error fetching Pokemon:", error);
-    });
+    }
+};
 
-getPokemon("alakazam")
-    .then(p2Pokemon => {
-        handleP2Selection(p2Pokemon);
-    })
-    .catch(error => {
-        console.error("Error fetching Pokemon:", error);
-    });
-
-function handleP1Selection(pokemon) {
+function p1Selection(pokemon) {
     var p1PokemonEl = document.getElementById("p1-pokemon");
-    console.log(p1PokemonEl)
+    var p1PokemonNameEl = document.getElementById("p1-pokemon-name");
     p1PokemonEl.src = pokemon.sprites.other.showdown.back_default;
+    p1PokemonNameEl.textContent = pokemon.name;
 }
 
-function handleP2Selection(pokemon) {
+function p2Selection(pokemon) {
     var p2PokemonEl = document.getElementById("p2-pokemon");
-    console.log(p2PokemonEl)
+    var p2PokemonNameEl = document.getElementById("p2-pokemon-name");
     p2PokemonEl.src = pokemon.sprites.other.showdown.front_default;
+    p2PokemonNameEl.textContent = pokemon.name;
 }
+
+function handleBattleResult(p1Pokemon, p2Pokemon) {
+    var p1Attack = p1Pokemon.stats[1].base_stat;
+    var p2Attack = p2Pokemon.stats[1].base_stat;
+    battleTitleEl.style.color = "rgb(198, 49, 49)";
+
+    if (p1Attack == p2Attack) {
+        battleTitleEl.textContent = "Draw!"
+    } else if (p1Attack > p2Attack) {
+        battleTitleEl.textContent = "P1 Wins!"
+        p1Score++;
+        localStorage.setItem("p1Score", p1Score);
+    } else {
+        battleTitleEl.textContent = "P2 Wins!"
+        p2Score++;
+        localStorage.setItem("p2Score", p2Score);
+    }
+
+    for (var i = 0; i < p1Score; i++) {
+        p1ScoreEl[i].classList.add("score");
+    }
+
+    for (var i = 0; i < p2Score; i++) {
+        p2ScoreEl[i].classList.add("score");
+    }
+}
+
+
+function countdown() {
+    var count = 3;
+
+    battleTitleEl.textContent = "Ready!"
+
+    var countdown = setInterval(() => {
+        if (count == 0) {
+            battleTitleEl.textContent = "Fight!";
+            clearInterval(countdown);
+        }
+        else {
+            battleTitleEl.textContent = count;
+            count--;
+        }
+
+    }, 1000);
+}
+
+
