@@ -197,3 +197,15 @@ form input {
     }
 }
 
+#playerSel1, #playerSel2, #pokemonList1, #pokemonList2 {
+    font-family: 'Silkscreen', 'sans-serif';
+}
+
+#page7 h1 {
+    font-size: 2.5rem;
+    font-family: 'Silkscreen', 'sans-serif';
+}
+
+#page7 img {
+    width: 40%;
+}
