@@ -69,7 +69,7 @@
                 <img src="https://fontmeme.com/permalink/240109/bd0f8c6f96ca1087f06a30c45057bd52.png" alt="name-pokemon-font" class="name1 mx-auto my-auto mb-3">
                 <form id="playerVsCpuForm">
                     <label for="playerName" class="text-xl">Player Name:</label>
-                    <input type="text" id="playerName" name="playerName" class="px-4 py-2 border rounded-md mt-2">
+                    <input type="text" id="playerName" name="playerName" class="px-4 py-2 border rounded-md mt-2" autocomplete="off">
                 </form>
             </div>
         </div>
@@ -81,11 +81,11 @@
                 <form id="playerVsPlayerForm">
                     <div class="mb-4">
                         <label for="player1Name" class="text-xl">Player 1 Name:</label>
-                        <input type="text" id="player1Name" name="player1Name" class="px-4 py-2 border rounded-md mt-2">
+                        <input type="text" id="player1Name" name="player1Name" class="px-4 py-2 border rounded-md mt-2" autocomplete="off">
                     </div>
                     <div>
                         <label for="player2Name" class="text-xl">Player 2 Name:</label>
-                        <input type="text" id="player2Name" name="player2Name" class="px-4 py-2 border rounded-md mt-2">
+                        <input type="text" id="player2Name" name="player2Name" class="px-4 py-2 border rounded-md mt-2" autocomplete="off">
                     </div>
                 </form>
             </div>
@@ -96,34 +96,53 @@
             <div class="box bg-gray-300 p-6 w-1/4 mx-auto my-auto flex-shrink-0 min-w-500">
                 <div class="screen flex-grow">
                     <img src="https://fontmeme.com/permalink/240109/0e51d5d5d01cde9706030dffd9fbb579.png" alt="title-pokemon-font" class="title mx-auto my-auto mb-4">
-                    <label>PLAYER 1 : JEAN PIERE</label>
+                    <label id ="player1NameData"></label>
                     <div class="w-full h-[100vh] bg-slate-200 flex justify-center items-center flex-col pt-2">
                         <div class="w-full relative" onclick="event.stopImmediatePropagation();">
-                          <input id="playerSel1" placeholder="Select pokemon" class="px-5 py-3 w-full border border-gray-300 rounded-md" />
+                          <input id="playerSel1" placeholder="Select pokemon" class="px-5 py-3 w-full border border-gray-300 rounded-md" autocomplete="off"/>
                           <div id="pokemonList1" class="w-full h-60 border border-gray-300 rounded-md bg-white absolute overflow-y-auto hidden"></div>
                         </div>
                     </div>
-                    <!-- <select id="playerSel1">
-                    </select> -->
                 </div>
             </div>
         </div>
         
-        <!-- Page 6: Select Pokemon Player 1 -->
+        <!-- Page 6: Select Pokemon Player 2 -->
         <div id="page6" class="hidden">
             <div class="box bg-gray-300 p-6 w-1/4 mx-auto my-auto flex-shrink-0 min-w-500">
                 <div class="screen flex-grow">
                     <img src="https://fontmeme.com/permalink/240109/0e51d5d5d01cde9706030dffd9fbb579.png" alt="title-pokemon-font" class="title mx-auto my-auto mb-4">
-                    <label>PLAYER 2 : MADELEINE</label>
+                    <label id="player2NameData">PLAYER 2 : MADELEINE</label>
                     <div class="w-full h-[100vh] bg-slate-200 flex justify-center items-center flex-col pt-2">
                         <div class="w-full relative" onclick="event.stopImmediatePropagation();">
-                          <input id="playerSel2" placeholder="Select pokemon" class="px-5 py-3 w-full border border-gray-300 rounded-md" />
+                          <input id="playerSel2" placeholder="Select pokemon" class="px-5 py-3 w-full border border-gray-300 rounded-md" autocomplete="off"/>
                           <div id="pokemonList2" class="w-full h-60 border border-gray-300 rounded-md bg-white absolute overflow-y-auto hidden"></div>
                         </div>
                     </div>
-                    <!-- <select id="playerSel1">
-                    </select> -->
                 </div>
+            </div>
+        </div>
+
+        <!-- Page 7: Preview View -->
+        <div id="page7" class="hidden flex">
+            <div class="box bg-gray-300 p-6 w-1/4 mx-auto my-auto flex-shrink-0 min-w-500">
+                <h1 id="pokemonNameLeftH1"></h1>
+                <p id="pokemonDescriptionLeftP"></p>
+                <img id="pokemonLeftImg">
+                <div id="pokemonStatsLeftDiv"></div>
+            </div>
+            <div class="box bg-gray-300 p-6 w-1/4 mx-auto my-auto flex-shrink-0 min-w-500">
+                <div class="screen flex-grow">
+                    <h1 id="titlePlayer1"></h1>
+                    <img src="https://fontmeme.com/permalink/240111/3910b530d654ac2701819f8d6a014269.png" alt="title-pokemon-font" class="title mx-auto my-auto mb-4">
+                    <h1 id="titlePlayer2"></h1>
+                </div>
+            </div>
+            <div class="box bg-gray-300 p-6 w-1/4 mx-auto my-auto flex-shrink-0 min-w-500">
+                <h1 id="pokemonNameRightH1"></h1>
+                <p id="pokemonDescriptionRightP"></p>
+                <img id="pokemonRightImg">
+                <div id="pokemonStatsRightDiv"></div>
             </div>
         </div>
 
@@ -144,12 +163,13 @@
     </div>
 
     <!-- Audio -->
-    <audio loop>
-    <!-- <audio autoplay loop> -->
+    <!-- <audio loop> -->
+    <audio autoplay loop>
         <source src="./assets/audio/Upbeat Retro Gaming Background Music.mp3" type="audio/mp3">
         Your browser does not support the audio element.
     </audio>
 
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
     <script src="./assets/js/script.js"></script>
 </body>
 </html>
