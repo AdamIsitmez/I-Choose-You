@@ -6,22 +6,54 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <title>I Choose You</title>
-    <link href="https://fonts.cdnfonts.com/css/pokemon-solid?styles=24573" rel="stylesheet">
+    <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Silkscreen&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./assets/css/style.css">
 </head>
 
 <body class="flex justify-center items-center min-h-screen">
     <div class="container mx-auto text-center">
-        <section class="pages1-4">
-            <div class="circles w-1/4 my-auto mx-auto py-3 flex-shrink-0 min-w-500">
-                <button class="blue bg-blue-600 px-5 py-5"></button>
-                <button class="red bg-red-500 px-2 py-2"></button>
-                <button class="yellow bg-yellow-500 px-2 py-2"></button>
-                <button class="green bg-green-500 px-2 py-2"></button>
+        <div class="circles w-1/4 my-auto mx-auto py-3 flex-shrink-0 min-w-500">
+            <button class="blue px-5 py-5"></button>
+            <button class="red px-2 py-2"></button>
+            <button class="yellow px-2 py-2"></button>
+            <button class="green px-2 py-2"></button>
+        </div>
+
+        <!-- Page 1: Title Page -->
+        <div id="page1">
+            <div
+                class="box bg-gray-300 p-6 w-1/4 mx-auto my-auto flex-shrink-0 min-w-500 flex flex-col justify-between">
+                <div class="flex-grow ">
+                    <img src="https://fontmeme.com/permalink/240109/0e51d5d5d01cde9706030dffd9fbb579.png"
+                        alt="title-pokemon-font" class="title mx-auto my-auto mb-4">
+                    <p class="text-xl mb-2" id="instructions">Become the ultimate Pokémon Trainer by defeating opponents
+                        in 5 rounds of intense Pokémon battles.</p>
+                </div>
+                <div class="mt-1">
+                    <button id="instPrevBtn">
+                        << /button>
+                            <button id="instNextBtn">></button>
+                </div>
             </div>
+
+            <div class="buttons p-6 w-1/4 mx-auto my-auto flex-shrink-0 min-w-500">
+                <div>
+                    <button id="startGameBtn" class="bg-blue-500 text-white font-bold px-4 py-2 rounded-md">Start
+                        Game</button>
+                </div>
+                <div>
+                    <button id="playBtn" class="bg-green-400 text-white px-2 py-1 rounded-md mt-8 mb-3 mr-5">▶</button>
+                    <button id="muteBtn" class="bg-red-400 text-white px-2 py-1 rounded-md mt-8 mb-3">Mute</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Page 2: Mode -->
+        <div id="page2" class="hidden">
             <div class="box bg-gray-300 p-6 w-1/4 mx-auto my-auto flex-shrink-0 min-w-500">
-                <h1 class="text-5xl font-bold mb-14">MoDe</h1>
+                <img src="https://fontmeme.com/permalink/240109/26a33fb0626cca9c6aeefafef4fe68c2.png"
+                    alt="mode-pokemon-font" class="mode mx-auto my-auto mb-3">
                 <div class="mt-4 font-bold">
                     <div class="mb-4">
                         <input type="radio" name="gameMode" id="pvp" value="pvp">
@@ -33,6 +65,40 @@
                     </div>
                 </div>
             </div>
+        </div>
+
+        <!-- Page 3: Player vs CPU -->
+        <div id="page3" class="hidden">
+            <div class="box bg-gray-300 p-6 w-1/4 mx-auto my-auto flex-shrink-0 min-w-500">
+                <img src="https://fontmeme.com/permalink/240109/bd0f8c6f96ca1087f06a30c45057bd52.png"
+                    alt="name-pokemon-font" class="name1 mx-auto my-auto mb-3">
+                <form id="playerVsCpuForm">
+                    <label for="playerName" class="text-xl">Player Name:</label>
+                    <input type="text" id="playerName" name="playerName" class="px-4 py-2 border rounded-md mt-2">
+                </form>
+            </div>
+        </div>
+
+        <!-- Page 4: Player vs Player -->
+        <div id="page4" class="hidden">
+            <div class="box bg-gray-300 p-6 w-1/4 mx-auto my-auto flex-shrink-0 min-w-500">
+                <img src="https://fontmeme.com/permalink/240109/6b417b84f2941f2b8caf1d048fcfe976.png"
+                    alt="names-pokemon-font" class="name2 mx-auto my-auto mb-3">
+                <form id="playerVsPlayerForm">
+                    <div class="mb-4">
+                        <label for="player1Name" class="text-xl">Player 1 Name:</label>
+                        <input type="text" id="player1Name" name="player1Name" class="px-4 py-2 border rounded-md mt-2">
+                    </div>
+                    <div>
+                        <label for="player2Name" class="text-xl">Player 2 Name:</label>
+                        <input type="text" id="player2Name" name="player2Name" class="px-4 py-2 border rounded-md mt-2">
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Back, Next, Mute buttons -->
+        <div id="buttonsContainer" class="hidden">
             <div class="buttons p-8 w-1/4 mx-auto my-auto flex-shrink-0 min-w-500">
                 <div>
                     <button id="backBtn"
@@ -44,18 +110,14 @@
                     <button id="muteBtn" class="bg-red-400 text-white px-2 py-1 rounded-md mt-8">Mute</button>
                 </div>
             </div>
-        </section>
-        <section class="page8">
-            <div class="p1">
-                <img id="p1-pokemon" src="" alt="">
-                <img id="p1-grass" src="assets/grass batte patch.svg" alt="">
-            </div>
-            <div class="p2">
-                <img id="p2-pokemon" src="" alt="">
-                <img id="p2-grass" src="assets/grass batte patch.svg" alt="">
-            </div>
-        </section>
+        </div>
     </div>
+
+    <!-- Audio -->
+    <audio autoplay loop>
+        <source src="./assets/audio/Upbeat Retro Gaming Background Music.mp3" type="audio/mp3">
+        Your browser does not support the audio element.
+    </audio>
 
     <script src="./assets/js/script.js"></script>
 </body>
