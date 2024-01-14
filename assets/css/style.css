@@ -47,6 +47,39 @@ button {
     border: 2px solid black;
 }
 
+/* addition of transition on final page results */
+.text-3xl, 
+.text-2xl
+ {
+    opacity:0;
+}
+@keyframes fadeIn {
+    from {
+        opacity:0;
+    } to {
+        opacity: 1;
+    }
+}
+
+
+
+.text-3xl, 
+.text-2xl {
+    animation: fadeIn 0.5s ease-in-out forwards;
+}
+
+
+
+.text-3xl {
+    animation-delay: 1.5ms;
+}
+
+
+.text-2xl {
+    animation-delay: 2ms;
+}
+
+
 /* Pokedex Circles: Blink Animation */
 @keyframes blinkBlue {
     0%, 100% {

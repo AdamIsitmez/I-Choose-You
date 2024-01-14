@@ -10,6 +10,7 @@ var playBtn1 = document.getElementById('playBtn1');
 var muteBtn1 = document.getElementById('muteBtn1');
 var playBtn2 = document.getElementById('playBtn2');
 var muteBtn2 = document.getElementById('muteBtn2');
+var table = document.getElementById('table');
 
 // Radio buttons and forms
 var pvpRadio = document.getElementById('pvp');
@@ -25,6 +26,8 @@ var page1 = document.getElementById('page1');
 var page2 = document.getElementById('page2');
 var page3 = document.getElementById('page3');
 var page4 = document.getElementById('page4');
+
+var page9 = document.getElementById('page9');
 
 var audioElement = document.querySelector('audio');
 
@@ -56,6 +59,7 @@ instNextBtn.addEventListener('click', showNextInstruction);
 startGameBtn.addEventListener('click', startGame);
 backBtn.addEventListener('click', navigateBack);
 nextBtn.addEventListener('click', navigateNext);
+
 
 // Function to play audio
 function playAudio() {
@@ -136,6 +140,7 @@ function savePlayerNames() {
     }
 }
 
+
 // Function to navigate to the next page
 function navigateNext() {
     savePlayerNames();
@@ -146,8 +151,73 @@ function navigateNext() {
     } else if (pvpRadio.checked) {
         page2.classList.add('hidden');
         page3.classList.add('hidden');
-        page4.classList.remove('hidden');
+        page4.classList.add('hidden');
     } else {
         console.log('No radio button selected');
     }
+    console.log("here");
+    //finalResults();
+    displayTopResults();
+}
+
+/* function to save data into the final page */
+function finalResults() {
+    var results = [
+        { name: "John Doe", results: "85" },
+        { name: "Jane Smith", results: "92" },
+        { name: "Bob Johnson", results: "78" },
+        { name: "Alice Williams", results: "95" },
+        { name: "Charlie Brown", results: "88" }
+    ]
+    localStorage.setItem('results', JSON.stringify(results));
+}
+
+
+function displayTopResults() {
+    table.innerHTML = '';
+    page4.classList.add('hidden');
+    page9.classList.remove('hidden');
+    var results1 = JSON.parse(localStorage.getItem('results'));
+
+
+    results1.sort(function (a, b) {
+        return b.results - a.results;
+    });
+
+    for (var i = 0; i < 5; i++) {
+        var trEl = document.createElement("tr");
+        var tdEl1 = document.createElement("td");
+        tdEl1.textContent = (i+1) + "." + results1[i].name;
+        var tdEl2 = document.createElement("td");
+        tdEl2.textContent = results1[i].results;
+        trEl.append(tdEl1, tdEl2)
+        table.append(trEl);
+    }
+    
+}
+var restartBtn = document.getElementById('restartBtn');
+restartBtn.addEventListener('click', restartGame);
+
+// Function to reset the game state
+function restartGame() {
+    // Reset any game-related variables or states here
+    currentIndex = 0;
+    updateInstructions();
+    
+   
+    page1.classList.remove('hidden');
+    page2.classList.add('hidden');
+    page3.classList.add('hidden');
+    page4.classList.add('hidden');
+    page9.classList.add('hidden');
+
+   
+    buttonsContainer.classList.add('hidden');
+    
+    
+    resetForm(playerVsPlayerForm);
+    resetForm(playerVsCpuForm);
+
+   
+    table.innerHTML = '';
 }
