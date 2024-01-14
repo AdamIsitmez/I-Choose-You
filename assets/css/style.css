@@ -6,6 +6,16 @@ body {
     background-color: rgb(244, 206, 69);
 }
 
+img {
+    text-align: center;
+}
+
+label,
+button {
+    font-family: 'Silkscreen', 'sans-serif';
+}
+
+/* Page 1 */
 #page1 img {
     width: 90%;
 }
@@ -18,21 +28,14 @@ body {
     margin-right: 20px;
 }
 
-#page2 img {
-    width: 50%;
-}
-
-#page3 img {
-    width: 80%;
-}
-
 #page1 p {
     font-family: 'Silkscreen', sans-serif;
     font-size: 18px;
 }
 
+/* Pokedex Circles */
 .circles {
-    background-color: rgb(198, 49, 49);
+    background-color: rgb(164, 32, 32);
     box-shadow: 3px 4px rgb(163, 163, 163);
     border-bottom: 8px double black;
     border-radius: 12px 12px 0 0;
@@ -42,9 +45,9 @@ body {
     border-radius: 50%;
     cursor: default;
     border: 2px solid black;
-    align-items: start;
 }
 
+/* Pokedex Circles: Blink Animation */
 @keyframes blinkBlue {
 
     0%,
@@ -93,8 +96,9 @@ body {
     }
 }
 
-.blue {
+.circles .blue {
     animation: blinkBlue 1s infinite;
+    border: 2px solid white;
 }
 
 .red {
@@ -109,12 +113,17 @@ body {
     animation: blinkYellow 1s infinite;
 }
 
+/* Box: Pokedex Screen */
 .box {
     box-shadow: 3px 4px rgb(163, 163, 163);
-    border: 20px solid rgb(198, 49, 49);
+    border: 20px solid rgb(164, 32, 32);
     padding: 5px solid black;
 }
 
+/* Page 2 */
+#page2 img {
+    width: 50%;
+}
 
 input[type="radio"] {
     transform: scale(1.5);
@@ -125,13 +134,9 @@ input[type="radio"]:checked+label {
     color: rgb(239, 9, 9);
 }
 
-label,
-button {
-    font-family: 'Silkscreen', 'sans-serif';
-}
-
-img {
-    text-align: center;
+/* Page 3 */
+#page3 img {
+    width: 80%;
 }
 
 form input {
@@ -139,14 +144,34 @@ form input {
     width: 100%;
 }
 
+/* Buttons */
 .buttons {
-    background-color: rgb(198, 49, 49);
+    background-color: rgb(164, 32, 32);
     box-shadow: 3px 4px rgb(163, 163, 163);
     border-radius: 0 0 12px 12px;
 }
 
 .buttons button {
     box-shadow: 2px 3px rgb(162, 161, 161);
+}
+
+#startGameBtn,
+#backBtn {
+    border: 2px solid rgba(59, 130, 246);
+}
+
+#nextBtn {
+    border: 2px solid rgba(16, 185, 129);
+}
+
+#playBtn2,
+#playBtn1 {
+    border: 2px solid rgba(52, 211, 153);
+}
+
+#muteBtn2,
+#muteBtn1 {
+    border: 2px solid rgba(248, 113, 113);
 }
 
 
@@ -157,23 +182,8 @@ form input {
 }
 
 .buttons button:hover {
-    border: 2px dashed black;
+    border: 2px dashed black !important;
     color: yellow;
-}
-
-.circles,
-.box,
-.buttons {
-    flex-shrink: 0;
-    width: 25%;
-}
-
-.btn {
-    border: none;
-    padding: 2px 20px;
-    color: #0d0d0d;
-    font-size: 16px;
-    cursor: pointer;
 }
 
 #page8 .box {
@@ -219,13 +229,13 @@ form input {
 #p1-pokemon {
     z-index: 2;
     animation: battleCenter-p1 2s cubic-bezier(0.9, 0.9, 0.9, 0);
-    animation-delay: 4s;
+    animation-delay: 6s;
 }
 
 #p2-pokemon {
     z-index: 2;
     animation: battleCenter-p2 2s cubic-bezier(0.9, 0.9, 0.9, 0);
-    animation-delay: 4s;
+    animation-delay: 6s;
 
 }
 
@@ -278,6 +288,8 @@ form input {
     background-size: cover;
 }
 
+.battle {}
+
 @keyframes battleCenter-p1 {
     0% {
         transform: translate(0px, 0px);
@@ -311,7 +323,7 @@ form input {
     .circles,
     .box,
     .buttons {
-        width: 62%;
+        width: 70%;
     }
 }
 
@@ -323,7 +335,6 @@ form input {
         width: 55%;
     }
 }
-
 
 @media (min-width: 769px) and (max-width: 1024px) {
 
@@ -342,7 +353,6 @@ form input {
         width: 35%;
     }
 }
-
 
 @media (min-width: 1281px) and (max-width: 1440px) {
 
@@ -369,4 +379,20 @@ form input {
     .buttons {
         width: 25%;
     }
+}
+
+#playerSel1,
+#playerSel2,
+#pokemonList1,
+#pokemonList2 {
+    font-family: 'Silkscreen', 'sans-serif';
+}
+
+#page7 h1 {
+    font-size: 2.5rem;
+    font-family: 'Silkscreen', 'sans-serif';
+}
+
+#page7 img {
+    width: 40%;
 }
