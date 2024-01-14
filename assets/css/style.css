@@ -16,6 +16,16 @@ button {
 }
 
 /* Page 1 */
+img {
+    text-align: center;
+}
+
+label,
+button {
+    font-family: 'Silkscreen', 'sans-serif';
+}
+
+/* Page 1 */
 #page1 img {
     width: 90%;
 }
@@ -34,7 +44,9 @@ button {
 }
 
 /* Pokedex Circles */
+/* Pokedex Circles */
 .circles {
+    background-color: rgb(164, 32, 32);
     background-color: rgb(164, 32, 32);
     box-shadow: 3px 4px rgb(163, 163, 163);
     border-bottom: 8px double black;
