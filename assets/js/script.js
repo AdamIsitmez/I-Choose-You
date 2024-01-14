@@ -490,9 +490,7 @@ function p2Selection(pokemon) {
 function handleBattleResult(p1Pokemon, p2Pokemon) {
 
     var p1Attack = p1Pokemon.stats[1].base_stat;
-    console.log("p1 " + p1Attack);
     var p2Attack = p2Pokemon.stats[1].base_stat;
-    console.log("p2 " + p2Attack);
 
     battleTitleEl.style.color = "rgb(198, 49, 49)";
 
@@ -519,7 +517,6 @@ function handleBattleResult(p1Pokemon, p2Pokemon) {
     nextBtn.style.visibility = "visible";
     nextBtn.classList.remove("ml-8");
     battleCount++;
-    console.log(battleCount);
     if (battleCount === 5) {
         nextBtn.textContent = "continue";
         state = 9;
