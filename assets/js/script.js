@@ -42,7 +42,7 @@ var playerSel1 = document.getElementById('playerSel1');
 var playerSel2 = document.getElementById('playerSel2');
 var titlePlayer1 = document.getElementById('titlePlayer1');
 var titlePlayer2 = document.getElementById('titlePlayer2');
-
+var tableBody = document.getElementById('scoreTableBody');
 
 // Pages
 var player1NameData = document.getElementById('player1NameData');
@@ -168,6 +168,11 @@ function navigateBack() {
         page4.classList.add('hidden');
         page2.classList.remove('hidden');
         buttonsContainer.classList.remove('hidden');
+    } else if (!page5.classList.contains('hidden')) {
+        page5.classList.add('hidden');
+        pvcRadio.checked ? page3.classList.remove('hidden'): page4.classList.remove('hidden');
+        buttonsContainer.classList.remove('hidden');
+        state = 0;
     }
 }
 
@@ -219,8 +224,9 @@ function navigateNext() {
     }
 
     if (state === 5) {
+        backBtn.classList.add("hidden");
         page5.classList.add('hidden');
-        pvcRadio.checked ? page7.classList.remove('hidden') : page6.classList.remove('hidden');
+        pvcRadio.checked ? page7.classList.remove('hidden'): page6.classList.remove('hidden');
         var pokemonRandom = getRandom(pokemonListArr);
         searchDetailApi(playerSel1.dataset.value, 1);
         searchDetailApi(pokemonRandom.url, 2);
@@ -231,6 +237,7 @@ function navigateNext() {
     }
 
     if (state === 6) { /* page6*/
+        backBtn.classList.add("hidden");
         page6.classList.add('hidden');
         page7.classList.remove('hidden'); /* Display page 7*/
         searchDetailApi(playerSel1.dataset.value, 1);
@@ -270,51 +277,7 @@ function navigateNext() {
         nextBtn.textContent = "Restart";
         page8.classList.add("hidden");
         page9.classList.remove("hidden");
-
-        function updateScoresTable() {
-
-            var tableBody = document.getElementById('scoreTableBody');
-
-            tableBody.innerHTML = '';
-
-
-            var p1Score = localStorage.getItem("p1Score") || 0;
-            var p2Score = localStorage.getItem("p2Score") || 0;
-
-            var player1Row = document.createElement('tr');
-            player1Row.innerHTML = `
-        <td class="border border-gray-400 px-4 py-2">1</td>
-        <td class="border border-gray-400 px-4 py-2">${titlePlayer1.textContent}</td>
-        <td class="border border-gray-400 px-4 py-2">${p1Score}</td>
-    `;
-            tableBody.appendChild(player1Row);
-
-            var player2Row = document.createElement('tr');
-            player2Row.innerHTML = `
-        <td class="border border-gray-400 px-4 py-2">2</td>
-        <td class="border border-gray-400 px-4 py-2">${titlePlayer2.textContent}</td>
-        <td class="border border-gray-400 px-4 py-2">${p2Score}</td>
-    `;
-            tableBody.appendChild(player2Row);
-
-
-            var rows = Array.from(tableBody.children);
-            rows.sort((a, b) => {
-                var scoreA = parseInt(a.children[2].textContent);
-                var scoreB = parseInt(b.children[2].textContent);
-                return scoreB - scoreA;
-            });
-
-            rows.forEach((row, index) => {
-
-                row.children[0].textContent = (index + 1).toString();
-                tableBody.appendChild(row);
-            });
-        }
-
         updateScoresTable();
-
-
         state = 10;
         return;
     }
@@ -324,6 +287,86 @@ function navigateNext() {
         location.reload();
     }
 }
+
+function readWeatherCitiesFromStorage() {
+    var results = localStorage.getItem('results');
+    if (results) {
+        results = JSON.parse(results);
+    } else {
+        results = [];
+    }
+    return results;
+}
+
+// Save data within local storage
+function saveCitiesWeatherToStorage(results) {
+    localStorage.setItem('results', JSON.stringify(results));
+}
+
+function updateScoresTable() {
+
+    /* Get information saved on local storage*/
+    var results = readWeatherCitiesFromStorage();
+    /*results = [] */
+    /* Get information Player1 and Player2 */
+    var result1 = 
+        {
+            name: titlePlayer1.textContent,
+            score: p1Score
+        };
+
+    var result2 = 
+        {
+            name: titlePlayer2.textContent,
+            score: p2Score
+        }
+    
+    /* Validate if the player already exists on out results */
+    for (var i = 0; i < results.length; i++) {
+        if(titlePlayer1.textContent.toLowerCase() === results[i].name.toLowerCase()) {
+            results[i].score = results[i].score + p1Score;
+            result1 = null;
+        }
+
+        if(pvcRadio.checked) {
+            result2 = null;
+        } else {
+            if(titlePlayer2.textContent.toLowerCase() === results[i].name.toLowerCase()) {
+                results[i].score = results[i].score + p2Score;
+                result2 = null;
+            }
+        }
+    }
+
+    /* Add new result to our previous results */
+    if(result1 !== null) {
+        results.push(result1);
+    }
+
+    if(result2 !== null) {
+        results.push(result2);
+    }
+    
+    /* Save results on local storage  */
+    saveCitiesWeatherToStorage(results);
+
+    /* Order array desc */
+    results.sort(function (a, b) {
+        return b.score - a.score;
+    });
+
+    /* Display top 5 results */
+    for (var i = 0; i < 5; i++) {
+        var rowResult = document.createElement('tr');
+        rowResult.innerHTML = `
+        <td class="border border-gray-400 px-4 py-2">${(i + 1)}</td>
+        <td class="border border-gray-400 px-4 py-2">${results[i].name}</td>
+        <td class="border border-gray-400 px-4 py-2">${results[i].score}</td>
+        `;
+        tableBody.append(rowResult);
+    }
+}
+
 
 function normalize(data, type) {
 
