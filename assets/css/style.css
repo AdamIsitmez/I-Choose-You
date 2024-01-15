@@ -571,3 +571,7 @@ form input {
 #page7 img {
     width: 40%;
 }
+
+#page9 h1, table {
+    font-family: 'Silkscreen', 'sans-serif';
+}

@@ -66,7 +66,7 @@ var page9 = document.getElementById('page9');
 
 
 var audioElement = document.querySelector('audio');
-
+audioElement.volume = 0.3;
 // Game Instructions
 var instArray = [
     "Become the ultimate Pokémon Trainer by defeating opponents in 5 rounds of intense Pokémon battles.",
@@ -413,7 +413,7 @@ function onKeyUp(e) {
     var keyword = e.target.value;
     idSelect === "1" ? pokemonList1.classList.remove("hidden") : pokemonList2.classList.remove("hidden");
     var filteredPokemons = pokemonListArr.filter((c) =>
-        c.name.toLowerCase().includes(keyword.toLowerCase())
+        c.name.toLowerCase().startsWith(keyword.toLowerCase())
     );
     renderOptions(filteredPokemons, idSelect);
 }
