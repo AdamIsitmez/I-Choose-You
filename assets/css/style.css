@@ -231,7 +231,6 @@ form input {
     color: yellow;
 }
 
-/* Media queries */
 #page8 .box {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -572,4 +571,3 @@ form input {
 #page7 img {
     width: 40%;
 }
-
