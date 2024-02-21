@@ -20,7 +20,7 @@ To install and run this project locally, follow these steps:
 
 1. Clone the repository to your local machine.
     
-    git clone git@github.com:adzy404/I-Choose-You.git
+    git clone git@github.com:AdamIsitmez/I-Choose-You.git
 
 2. Open the project folder in your code editor.
 3. Explore the code and open index.html in your web browser.
@@ -63,7 +63,7 @@ To install and run this project locally, follow these steps:
 
 ## Live Demo
 
-Check out the live demo of 'I Choose You' [here](https://adzy404.github.io/I-Choose-You/).
+Check out the live demo of 'I Choose You' [here](https://adamisitmez.github.io/I-Choose-You/).
 
 ## Credits
 
